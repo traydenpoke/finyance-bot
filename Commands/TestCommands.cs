@@ -1,6 +1,5 @@
 ﻿using Discord;
 using Discord.Interactions;
-using System.Threading.Tasks;
 
 namespace FinyanceApp.Commands
 {

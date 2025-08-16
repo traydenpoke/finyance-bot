@@ -1,6 +1,6 @@
 ﻿using Npgsql;
 
-namespace FinyanceApp.Database
+namespace FinyanceApp.Data
 {
   public class DatabaseManager
   {
@@ -68,9 +68,12 @@ namespace FinyanceApp.Database
         CREATE TABLE IF NOT EXISTS assets (
           id SERIAL PRIMARY KEY,
           account_id INTEGER REFERENCES accounts(id),
+          user_id BIGINT NOT NULL,
           symbol TEXT NOT NULL,
           description TEXT NOT NULL,
-          type TEXT CHECK(type IN ('stock', 'crypto')) NOT NULL
+          type TEXT CHECK(type IN ('stock', 'crypto')) NOT NULL,
+          amount NUMERIC NOT NULL,
+          cost NUMERIC NOT NULL
         );
       ");
     }

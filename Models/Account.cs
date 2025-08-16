@@ -1,3 +1,4 @@
+using FinyanceApp.Models.Interaces;
 using Npgsql;
 
 namespace FinyanceApp.Models
@@ -13,11 +14,11 @@ namespace FinyanceApp.Models
 
     public void LoadFromReader(NpgsqlDataReader reader)
     {
-      Id = reader.GetInt32(0);
-      UserId = reader.GetInt64(1);
-      Description = reader.GetString(2);
-      Type = reader.GetString(3);
-      Balance = reader.GetDecimal(4);
+      Id = reader.GetInt32(reader.GetOrdinal("id"));
+      UserId = reader.GetInt64(reader.GetOrdinal("user_id"));
+      Description = reader.GetString(reader.GetOrdinal("description"));
+      Type = reader.GetString(reader.GetOrdinal("type"));
+      Balance = reader.GetDecimal(reader.GetOrdinal("balance"));
     }
 
     public (string Columns, string Parameters, List<NpgsqlParameter> Values) GetInsertDef()

@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 
 
 using System.Reflection;
+using FinyanceApp.Data;
 
 namespace FinyanceApp
 {

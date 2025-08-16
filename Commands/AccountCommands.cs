@@ -1,6 +1,6 @@
 using Discord.Interactions;
 using FinyanceApp.Database;
-using FinyanceApp.Models;
+using FinyanceApp.Models.Enums;
 
 namespace FinyanceApp.Commands
 {
@@ -13,8 +13,6 @@ namespace FinyanceApp.Commands
     {
       _accountService = accountService;
     }
-
-    public enum AccountType { Cash, Stock, Crypto }
 
     [SlashCommand("create", "Create an account")]
     public async Task CreateAsync(string description, AccountType type, decimal balance = 0)

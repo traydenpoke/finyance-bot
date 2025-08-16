@@ -1,7 +1,9 @@
 using System.Text;
+using FinyanceApp.Models.Enums;
+using FinyanceApp.Models.Interaces;
 using Npgsql;
 
-namespace FinyanceApp.Database
+namespace FinyanceApp.Data
 {
   public class PostgresService
   {
@@ -9,11 +11,6 @@ namespace FinyanceApp.Database
     public PostgresService(DatabaseManager db)
     {
       _db = db;
-    }
-
-    public enum TableName
-    {
-      Accounts, Assets
     }
 
     // Helper to create a typed parameter
@@ -115,7 +112,7 @@ namespace FinyanceApp.Database
       return rowsAffected > 0;
     }
 
-    // Update row by field
+    // Update row fields by id
     public async Task<bool> UpdateFieldsByIdAsync(
         TableName tableName,
         int id,
@@ -149,6 +146,5 @@ namespace FinyanceApp.Database
       int rowsAffected = await cmd.ExecuteNonQueryAsync();
       return rowsAffected > 0;
     }
-
   }
 }
